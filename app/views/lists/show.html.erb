@@ -1,2 +1,26 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<div class="container">
+  <div class="row align-items-center">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-4 card rounded p-2 m-2">
+        <%= bookmark.movie.title %>
+        <%= bookmark.comment %>
+        <%= link_to 'delete', bookmark_path(bookmark), method: 'delete', :class => "btn btn-danger m-3" %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="card">
+    <h2>New Bookmark</h2>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.input :comment %>
+      <%= f.association :movie, input_html: { class: 'select2' } %>
+      <%= f.button :submit , class: "btn btn-primary m3 rounded"  %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<%= link_to "back", lists_path, :class => "btn btn-warning m-3" %>

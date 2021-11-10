@@ -1,2 +1,12 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<div class="list-banner">
+  <h1>Create your list</h1>
+</div>
+
+<div class="container">
+   <%= simple_form_for(@list) do |f| %>
+     <%= f.input :name %>
+     <%= f.submit "Create", class: "btn btn-primary" %>
+   <% end %>
+ </div>
+
+<%= link_to 'Back', lists_path %>
