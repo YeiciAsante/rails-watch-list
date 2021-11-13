@@ -1,12 +1,17 @@
-<div class="list-banner">
-  <h1>Create your list</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1>Create your list</h1>
+      <%= simple_form_for(@list) do |f| %>
+      <%= f.input :name %>
+      <%= f.submit "Create", class: "btn btn-primary" %>
+    <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-   <%= simple_form_for(@list) do |f| %>
-     <%= f.input :name %>
-     <%= f.submit "Create", class: "btn btn-primary" %>
-   <% end %>
- </div>
-
-<%= link_to 'Back', lists_path %>
+<div class="container d-flex justify-content-center">
+  <button type="button" class="btn btn-outline-dark">
+      <%= link_to 'Back to home', lists_path %>
+  </button>
+</div>

@@ -1,4 +1,21 @@
 <div class="container">
+  <div class="card">
+    <div class="container d-flex justify-content-center">
+      <h2>New Bookmark</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.input :comment %>
+          <%= f.association :movie, input_html: { class: 'select2' } %>
+          <%= f.button :submit , class: "btn btn-primary m3 rounded"  %>
+        <% end %>
+      </div>
+  </div>
+</div>
+
+
+<div class="container">
   <div class="row align-items-center">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="col-4 card rounded p-2 m-2">
@@ -8,19 +25,5 @@
       </div>
     <% end %>
   </div>
-
-
-  <div class="card">
-    <h2>New Bookmark</h2>
-    <%= simple_form_for [@list, @bookmark] do |f| %>
-      <%= f.input :comment %>
-      <%= f.association :movie, input_html: { class: 'select2' } %>
-      <%= f.button :submit , class: "btn btn-primary m3 rounded"  %>
-    <% end %>
-  </div>
-</div>
-
-
-
 
 <%= link_to "back", lists_path, :class => "btn btn-warning m-3" %>
